@@ -1,0 +1,70 @@
+﻿<Window x:Class="TSI33A_pSet01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="496" Width="400">
+    <Grid Background="#2D2D30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        
+        <!-- Grid CRUD -->
+        <Grid Grid.Row="0">
+            <!-- Define a quantidade e tamanho das linhas desse GRID-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" /> <!-- Linha 1, botões -->
+                <RowDefinition Height="50" /> <!-- Linha 2, arquivo -->
+                <RowDefinition Height="60" /> <!-- Linha 3, edição/criação de registros -->
+            </Grid.RowDefinitions>
+
+            <!-- Define a quantidade e tamanho das colunas desse GRID -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Botões CRUD -->
+            <Button Grid.Row="0"  Grid.Column="0" Height="40" Width="70" x:Name="btn_salvar" Content="Salvar" IsEnabled="False"/>
+            <Button Grid.Row="0"  Grid.Column="1" Height="40" Width="70" x:Name="btn_apagar" Content="Apagar" IsEnabled="False" />
+            <Button Grid.Row="0"  Grid.Column="2" Height="40" Width="70" x:Name="btn_editar" Content="Editar" IsEnabled="False"/>
+            <Button Grid.Row="1"  Grid.Column="4" Height="30" Width="55" x:Name="btn_carregar" Content="Carregar" Click="btn_carregar_Click" Margin="3,10,15,10" />
+            
+            <!-- text box do local do arquivo -->
+            <TextBox Grid.Row="1" Grid.ColumnSpan="4" Height="25" Width="310" x:Name="tbx_carregar" IsEnabled="False" FontSize="12">
+                Selecione arquivo...
+            </TextBox>
+            
+            <!-- Grid interno-->
+            <Grid Grid.Row="2" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" /> <!-- Coluna de Label -->
+                    <ColumnDefinition Width="200" /> <!-- Coluna de TextBox -->
+                </Grid.ColumnDefinitions>
+
+                <!-- ID -->
+                <Label Grid.Row="0" Grid.Column="0" Height="25">ID</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Width="50" Height="20" x:Name="tbx_id" IsEnabled="False" Margin="0,5,150,5"></TextBox>
+
+                <!-- Nome -->
+                <Label Grid.Row="1" Grid.Column="0" Height="25">Nome</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Height="20" x:Name="tbx_nome" IsEnabled="True"></TextBox>
+            </Grid>
+            <!-- FIM Grid interno-->
+        </Grid>
+        <!-- FIM Grid CRUD -->
+        
+        <!-- Grid da tabela -->
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="dtg_regioes" Height="270" Width="350" ColumnHeaderHeight="30" Margin="20" IsReadOnly="True" SelectionChanged="dtg_continentes_SelectionChanged" />
+        </Grid>
+    </Grid>
+
+</Window>
